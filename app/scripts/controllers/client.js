@@ -25,11 +25,29 @@ angular.module('burnoutApp')
 	    		else {
 	    			$scope.empty_projectlist = true;
 	    		}
+
 	    	},function() {
 	    		console.log("There was an error saving");
 	  		})
   	}, function() {
 	    console.log("There was an error saving");
   	})
+
+  	$scope.editClient = function(){
+  		$scope.client.put().then(function(response){
+  			 $('#editClientModal').modal('toggle');
+  			 ngToast.create({
+  			 	content: 'Updated Successfully',
+  			 	timeout: 2000
+  			 });
+  		}, function(response){
+  			ngToast.Create({
+  			 	content: 'Error Occured',
+  			 	timeout: 2000
+  			 });
+  			console.log('error')
+  		})
+  	}
+    
 
   });

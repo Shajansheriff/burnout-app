@@ -1,5 +1,5 @@
 <div ng-controller="ClientsCtrl">
-	<div class="jumbotron" ng-show="empty_clientlist">
+	<div class="jumbotron" ng-show="!clients.length">
 	  <h2>Ops, No clients here!</h2>
 	  <p class="lead">
 	    <img src="images/client.png" alt="I'm Yeoman"><br>
@@ -7,7 +7,7 @@
 	  </p>
 	  <p><button class="btn btn-lg btn-success" data-toggle="modal" data-target="#clientModal" >Create Client!</button></p>
 	</div>
-	<div ng-hide="empty_clientlist">
+	<div ng-show="clients.length">
 		<div class="row">
 			<div class="col-md-7">
 				<h4>List of Clients</h4>

@@ -1,4 +1,69 @@
-<p>This is the project view.</p>
-<li ng-repeat="project_timeline in project_timelines">
-	Time Spent: {{ project_timeline.time_spent }} at {{ project_timeline.spent_on }}
-</li>
+<div>
+	<div style="text-align: center;" ng-show="project_not_found"><h2>Project Not Found!!</h2></div>
+	<div ng-hide="project_not_found">
+		<div class="row project-info">
+			<div class="col-md-2"><i class="glyphicon glyphicon-folder-open" style=""></i>
+			<p>	<strong>{{ project.name }}</strong></p>
+			<p><small>Project Name</small></p></div>
+			<div class="col-md-2"><i class="glyphicon glyphicon-usd" style=""></i>
+			<p>	<strong>{{ project.cost_per_hour }}</strong></p>
+			<p><small>Cost Per Hour</small></p></div>
+			<div class="col-md-3"><i class="glyphicon glyphicon-calendar" style="text"></i>
+			<p>	<strong>{{ project.start_date }}</strong></p>
+			<p><small>Start Date</small></p></div>
+			<div class="col-md-3"><i class="glyphicon glyphicon-calendar" style=""></i>
+			<p>	<strong>{{ project.end_date }}</strong></p>
+			<p><small>End Date</small></p></div>
+			<div class="col-md-2"><i class="glyphicon glyphicon-ok" style=""></i>
+			<p>	<strong>{{ project.completed }}</strong></p>
+			<p><small>Completed</small></p></div>
+		</div>
+		<form class="form-inline" style="text-align: center;">
+		  <div class="form-group" style="margin-right: 15px;">
+		    <div class="input-group">
+		      <div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
+		      <input type="text" class="form-control" ng-model="project_timeline.time_spent" id="" placeholder="Time Spent">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="input-group date" >
+		      <div class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></div>
+		      <input type="text" id="datetimepicker"  class="form-control" ng-model="project_timeline.spent_on" id="" placeholder="Date">
+		    </div>
+		  </div>
+		  <input type="hidden" ng-model="project_timelines.project" value="{{ project_id }}" name="">
+		  <button class="btn btn-primary" ng-click="createTimeline()"><i class="glyphicon glyphicon-plus-sign"></i> Add</button>
+		</form>
+		<br>
+		<div ng-show="project_timelines.length">
+			<!-- <h3 style="text-align: center;">Project {{ project.name }} Timeline</h3> -->
+			<div class="col-md-12" style="text-align: center; margin-bottom: 20px;">
+				<div class="col-md-3 col-md-offset-3">
+					<a href="#" class="btn btn-danger btn-lg" role="button"><span class="">{{ project.expense | currency }}</span> <br>Money Spent</a>
+				</div>
+				<div class="col-md-3">
+					<a href="#" class="btn btn-success btn-lg" role="button"><span class="">{{ project.total_hours_spent }}</span> <br>Hours Spent</a>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="col-md-6 col-md-offset-3">
+			<table class="table table-hover table-bordered text-center" >
+				<thead>
+					<th>Hour Spent</th>
+					<th>Date</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="project_timeline in project_timelines">
+					<td>{{ project_timeline.time_spent }}</td>
+					<td>{{ project_timeline.spent_on }}</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+		<div ng-show="!project_timelines.length" style="text-align: center;"> 
+		<hr>
+		<h3>No Time Spent on the project.</h3><h4> Please Add from above Form.</h4></div>
+	</div>
+</div>

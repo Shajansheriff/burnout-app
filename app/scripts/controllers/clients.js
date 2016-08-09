@@ -9,7 +9,9 @@
  */
 angular.module('burnoutApp')
   .controller('ClientsCtrl', function ($scope, $route, Restangular, ngToast) {
-    $scope.empty_clientlist = false;
+    $scope.empty_clientlist = true;
+    $scope.projects = [];
+    $scope.clients = [];
     var baseClients = Restangular.all('clients/');
     baseClients.getList().then(function(response){
         if(response.length){
@@ -32,6 +34,8 @@ angular.module('burnoutApp')
     
     $scope.addClient = function () {
         baseClients.post($scope.client).then(function(response) {
+            $('#clientModal').modal('toggle');
+            $scope.empty_clientlist = false;
 		    ngToast.create({
                 content: response.name + ' created Successfully!',
                 timeout: 2000,
@@ -39,7 +43,11 @@ angular.module('burnoutApp')
             })
 		    $scope.clients.push(response)
 		  }, function() {
-		    console.log("There was an error saving");
+		    ngToast.danger({
+                content: 'Error Occured created!',
+                timeout: 2000,
+                animation: 'fade'
+            })
 		  });
 
     	console.log($scope.client.indexOf())
@@ -66,5 +74,6 @@ angular.module('burnoutApp')
                 })
         }
     }
+    console.log($scope.projects)
     
   });

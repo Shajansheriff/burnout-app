@@ -7,12 +7,6 @@
                     <h2 style="text-transform: capitalize;">{{ client.name }}</h2>
                     <p><strong>Email: </strong> {{ client.email }} </p>
                     <p><strong>Address: </strong> {{ client.address }} </p>
-                    <!-- <p><strong>Skills: </strong>
-                        <span class="tags">html5</span> 
-                        <span class="tags">css3</span>
-                        <span class="tags">jquery</span>
-                        <span class="tags">bootstrap3</span>
-                    </p> -->
                     <br>
                 </div>             
                 <div class="col-xs-12 col-sm-4 text-center">
@@ -23,44 +17,62 @@
             </div>            
             <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2 ng-hide="empty_clientlist"><strong> {{ client.projects_count }}</strong></h2>                    
-                    <h2 ng-show="empty_projectlist" ><strong> 0 </strong></h2>                    
+                    <h2><i class="glyphicon glyphicon-briefcase"> </i></h2>                    
                     <p><small>Projects</small></p>
                     <a ng-href="#/clients/{{ client.id }}/projects" class="btn btn-success btn-block" ><span class="fa fa-plus-circle"></span> View </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2 ng-hide="empty_clientlist"><strong> {{ client.projects_count }}</strong></h2>                    
-                    <h2 ng-show="empty_projectlist" ><strong> 0 </strong></h2>                    
+                                       
+                    <h2><i class="glyphicon glyphicon-ok"> </i></h2>                    
                     <p><small>Completed Projects</small></p>
                     <button class="btn btn-success btn-block" ><span class="fa fa-plus-circle"></span> View </button>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong class="fa fa-user" > </strong></h2>                    
+                    <h2><i class="glyphicon glyphicon-user"> </i></h2>                    
                     <p><small>Client Profile</small></p>
-                    <button class="btn btn-info btn-block" > Edit </button>
+                    <button class="btn btn-info btn-block" data-toggle="modal" data-target="#editClientModal" > Edit </button>
                 </div>
                 
-                <!-- <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><strong>43</strong></h2>                    
-                    <p><small>Snippets</small></p>
-                    <div class="btn-group dropup btn-block">
-                      <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Edit </button>
-                      <button type="button" class="btn btn-primary" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <ul class="dropdown-menu text-left" role="menu">
-                        <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
-                        <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="fa fa-warning pull-right"></span>Report this user for spam</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
-                      </ul>
-                    </div>
-                </div> -->
+              
             </div>
     	 </div>                 
 		</div>
+	</div>
+
+	<!--Edit Client Modal -->
+	<div id="editClientModal" class="modal fade" role="dialog">
+	  	<div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Edit Client</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form name="clientForm">
+					<div class="form-group">
+						<input ng-model="client.name" class="form-control" type="text" required="required" placeholder="Client Name" pattern="\b[a-zA-Z0-9]+" title="Only AlphaNums, Chars Min: 3 & Max: 50" minlength="3" maxlength="50">
+					</div>
+					<div class="form-group">
+						<input ng-model="client.email" class="form-control" type="email" required="required" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" rows="5" ng-model="client.address" placeholder="Address">
+						</textarea>
+					</div>
+					
+						
+					<div class="form-group">
+						<button ng-click="editClient(client)" class="btn btn-success btn-block pull-right">Submit</button>
+					</div>
+				</form>
+				<br>
+				<br>
+		      </div>
+		      <div class="modal-footer">
+		        <a ng-href="#/clients" type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+		      </div>
+		    </div>
+	  	</div>
 	</div>
 </div>
