@@ -24,7 +24,7 @@ angular
 
     httpMethodInterceptorProvider.whitelistDomain('burnout-api.herokuapp.com');
     httpMethodInterceptorProvider.whitelistDomain('twitter.com');
-    RestangularProvider.setBaseUrl('http://127.0.0.1:8000/');
+    RestangularProvider.setBaseUrl('https://burnout-api.herokuapp.com');
     RestangularProvider.setRequestSuffix('/');
     $routeProvider
       .when('/', {
