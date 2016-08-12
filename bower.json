@@ -13,7 +13,8 @@
     "restangular": "^1.5.2",
     "ngToast": "ngtoast#^2.0.0",
     "font-awesome": "^4.6.3",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.37"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "angular-http-loader": "^0.1.7"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

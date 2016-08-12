@@ -17,10 +17,14 @@ angular
     'ngSanitize',
     'ngTouch',
     'restangular',
-    'ngToast'
+    'ngToast',
+    'ng.httpLoader'
   ])
-  .config(function ($routeProvider, RestangularProvider) {
-    RestangularProvider.setBaseUrl('https://burnout-api.herokuapp.com/');
+  .config(function ($routeProvider, RestangularProvider, httpMethodInterceptorProvider) {
+
+    httpMethodInterceptorProvider.whitelistDomain('burnout-api.herokuapp.com');
+    httpMethodInterceptorProvider.whitelistDomain('twitter.com');
+    RestangularProvider.setBaseUrl('http://127.0.0.1:8000/');
     RestangularProvider.setRequestSuffix('/');
     $routeProvider
       .when('/', {

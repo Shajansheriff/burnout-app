@@ -2,17 +2,19 @@
 	<div style="text-align: center;" ng-show="project_not_found"><h2>Project Not Found!!</h2></div>
 	<div ng-hide="project_not_found">
 		<div class="row project-info">
-			<div class="col-md-2"><i class="glyphicon glyphicon-folder-open" style=""></i>
+			<div class="col-md-2 col-md-offset-1"><i class="glyphicon glyphicon-folder-open" style=""></i>
 			<p>	<strong>{{ project.name }}</strong></p>
 			<p><small>Project Name</small></p></div>
 			<div class="col-md-2"><i class="glyphicon glyphicon-usd" style=""></i>
 			<p>	<strong>{{ project.cost_per_hour }}</strong></p>
 			<p><small>Cost Per Hour</small></p></div>
-			<div class="col-md-3"><i class="glyphicon glyphicon-calendar" style="text"></i>
-			<p>	<strong>{{ project.start_date }}</strong></p>
+			<div class="col-md-2"><i class="glyphicon glyphicon-calendar" style=""></i>
+			<p ng-if="project.start_date != ''">	<strong>{{ project.start_date }}</strong></p>
+			<p ng-if="project.start_date == null ">	<strong> - </strong></p>
 			<p><small>Start Date</small></p></div>
-			<div class="col-md-3"><i class="glyphicon glyphicon-calendar" style=""></i>
+			<div class="col-md-2"><i class="glyphicon glyphicon-calendar" style=""></i>
 			<p>	<strong>{{ project.end_date }}</strong></p>
+      <p ng-if="project.end_date == null ">	<strong> - </strong></p>
 			<p><small>End Date</small></p></div>
 			<div class="col-md-2"><i class="glyphicon glyphicon-ok" style=""></i>
 			<p>	<strong>{{ project.completed }}</strong></p>
@@ -36,13 +38,12 @@
 		</form>
 		<br>
 		<div ng-show="project_timelines.length">
-			<!-- <h3 style="text-align: center;">Project {{ project.name }} Timeline</h3> -->
 			<div class="col-md-12" style="text-align: center; margin-bottom: 20px;">
 				<div class="col-md-3 col-md-offset-3">
-					<a href="#" class="btn btn-danger btn-lg" role="button"><span class="">{{ project.expense | currency }}</span> <br>Money Spent</a>
+					<a href="javascript:void(0)" class="btn btn-danger btn-lg" role="button"><span class="">{{ project.expense | currency }}</span> <br>Money Spent</a>
 				</div>
 				<div class="col-md-3">
-					<a href="#" class="btn btn-success btn-lg" role="button"><span class="">{{ project.total_hours_spent }}</span> <br>Hours Spent</a>
+					<a href="javascript:void(0)" class="btn btn-success btn-lg" role="button"><span class="">{{ project.total_hours_spent }}</span> <br>Hours Spent</a>
 				</div>
 			</div>
 			<br>
@@ -62,7 +63,7 @@
 			</table>
 			</div>
 		</div>
-		<div ng-show="!project_timelines.length" style="text-align: center;"> 
+		<div ng-show="!project_timelines.length" style="text-align: center;">
 		<hr>
 		<h3>No Time Spent on the project.</h3><h4> Please Add from above Form.</h4></div>
 	</div>

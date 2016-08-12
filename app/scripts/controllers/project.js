@@ -10,6 +10,7 @@
 angular.module('burnoutApp')
   .controller('ProjectCtrl', function ($scope, $routeParams, Restangular, ngToast) {
     var project_id = $routeParams.id;
+    $scope.loading = true;
     $scope.project_id = project_id;
     $scope.project = ''
     $scope.project_timelines = []
@@ -40,19 +41,19 @@ angular.module('burnoutApp')
                     console.log(response)
                     $scope.project_timelines.push(response)
                     $scope.project.expense += response.time_spent * $scope.project.cost_per_hour;
-                    $scope.project.total_hours_spent += response.time_spent; 
+                    $scope.project.total_hours_spent += response.time_spent;
                     $scope.project_timeline =''
                 }, function(response){
                     console.log(response)
                     ngToast.danger('Error Occured. Please Try Again')
                 })
         }
-    	   
+
     }
-    
+
     $('#datetimepicker').datetimepicker({
         format: 'YYYY-MM-DD'
     });
-    
+
 
   });

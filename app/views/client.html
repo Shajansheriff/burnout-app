@@ -5,37 +5,35 @@
             <div class="col-sm-12">
                 <div class="col-xs-12 col-sm-8">
                     <h2 style="text-transform: capitalize;">{{ client.name }}</h2>
-                    <p><strong>Email: </strong> {{ client.email }} </p>
-                    <p><strong>Address: </strong> {{ client.address }} </p>
+                    <p><i class="glyphicon glyphicon-envelope"></i><strong> Email: </strong> {{ client.email }} </p>
+                    <p><i class="glyphicon glyphicon-align-left glyphicon-leaf"></i><strong> Address: </strong> {{ client.address }} </p>
                     <br>
-                </div>             
+                </div>
                 <div class="col-xs-12 col-sm-4 text-center">
                     <figure>
                         <img src="images/client.png" alt="" class="img-responsive">
                     </figure>
                 </div>
-            </div>            
+            </div>
             <div class="col-xs-12 divider text-center">
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><i class="glyphicon glyphicon-briefcase"> </i></h2>                    
+                    <h2><i class="glyphicon glyphicon-briefcase"> </i></h2>
                     <p><small>Projects</small></p>
-                    <a ng-href="#/clients/{{ client.id }}/projects" class="btn btn-success btn-block" ><span class="fa fa-plus-circle"></span> View </a>
+                    <a ng-href="#/clients/{{ client.id }}/projects" class="btn btn-success btn-block" > View </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                                       
-                    <h2><i class="glyphicon glyphicon-ok"> </i></h2>                    
-                    <p><small>Completed Projects</small></p>
-                    <button class="btn btn-success btn-block" ><span class="fa fa-plus-circle"></span> View </button>
+                    <h2><i class="glyphicon glyphicon-usd"> </i></h2>
+                    <p><small>Total Income</small></p>
+                    <i class="btn btn-success btn-block" style="cursor: default;">
+                      {{ client.total_income | currency }} </i>
                 </div>
                 <div class="col-xs-12 col-sm-4 emphasis">
-                    <h2><i class="glyphicon glyphicon-user"> </i></h2>                    
+                    <h2><i class="glyphicon glyphicon-user"> </i></h2>
                     <p><small>Client Profile</small></p>
                     <button class="btn btn-info btn-block" data-toggle="modal" data-target="#editClientModal" > Edit </button>
                 </div>
-                
-              
             </div>
-    	 </div>                 
+    	 </div>
 		</div>
 	</div>
 
@@ -60,8 +58,6 @@
 						<textarea class="form-control" rows="5" ng-model="client.address" placeholder="Address">
 						</textarea>
 					</div>
-					
-						
 					<div class="form-group">
 						<button ng-click="editClient(client)" class="btn btn-success btn-block pull-right">Submit</button>
 					</div>
@@ -76,3 +72,5 @@
 	  	</div>
 	</div>
 </div>
+
+

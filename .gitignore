@@ -2,3 +2,7 @@
 /.tmp
 /.sass-cache
 /bower_components
+.idea/
+
+# Node Server File
+web.js

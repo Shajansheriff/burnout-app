@@ -16,8 +16,23 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <style>
+      .no-js #loader { display: none;  }
+      .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+      .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 70px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(images/loader-64x/Preloader_2.gif) center no-repeat #fff;
+      }
+    </style>
+
   </head>
   <body ng-app="burnoutApp">
+  <div ng-http-loader methods="GET" template="example-loader.tpl.html"></div>
   <toast></toast>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -53,6 +68,7 @@
     </div>
 
     <div class="container">
+      <div class="se-pre-con" ng-show="loading"></div>
     <div ng-view=""></div>
     </div>
 
@@ -69,36 +85,43 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/lodash/lodash.js"></script>
-    <script src="bower_components/restangular/dist/restangular.js"></script>
-    <script src="bower_components/ngToast/dist/ngToast.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
-    <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <script   src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/restangular/dist/restangular.js"></script>
+  <script src="bower_components/ngToast/dist/ngToast.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+  <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="bower_components/angular-http-loader/app/package/js/angular-http-loader.min.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/client.js"></script>
-        <script src="scripts/controllers/clients.js"></script>
-        <script src="scripts/controllers/project.js"></script>
-        <script src="scripts/controllers/projects.js"></script>
-        <script src="scripts/controllers/client_projects.js"></script>
-        <!-- endbuild -->
-        
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/about.js"></script>
+  <script src="scripts/controllers/client.js"></script>
+  <script src="scripts/controllers/clients.js"></script>
+  <script src="scripts/controllers/project.js"></script>
+  <script src="scripts/controllers/projects.js"></script>
+  <script src="scripts/controllers/client_projects.js"></script>
+  <!-- endbuild -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+  <script type="text/ng-template" id="example-loader.tpl.html">
+    <div class="se-pre-con"></div>
+  </script>
 </body>
 </html>
