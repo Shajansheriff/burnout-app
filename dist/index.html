@@ -1,11 +1,21 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.13bfc2bf.css"> <link rel="stylesheet" href="styles/main.70c9d2b1.css"> </head> <body ng-app="burnoutApp"> <toast></toast> <!--[if lte IE 8]>
+<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.13bfc2bf.css"> <link rel="stylesheet" href="styles/main.70c9d2b1.css"> <style>.no-js #loader { display: none;  }
+      .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+      .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 70px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(images/loader-64x/Preloader_2.f676556f.gif) center no-repeat #fff;
+      }</style> </head> <body ng-app="burnoutApp"> <div ng-http-loader methods="GET" template="example-loader.tpl.html"></div> <toast></toast> <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation" style="margin-bottom: 0"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#/">Burnout</a> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav" ng-controller="MainCtrl"> <!-- <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/clients">Clients</a></li>
-              <li><a ng-href="#/" >Contact</a></li> --> <li ng-repeat="nav in navbar" style="text-transform: capitalize"> <a ng-href="#/{{ nav }}"> {{ nav }}</a></li> </ul> </div> </div> </div> </div> <div class="container"> <div ng-view=""></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+              <li><a ng-href="#/" >Contact</a></li> --> <li ng-repeat="nav in navbar" style="text-transform: capitalize"> <a ng-href="#/{{ nav }}"> {{ nav }}</a></li> </ul> </div> </div> </div> </div> <div class="container"> <div class="se-pre-con" ng-show="loading"></div> <div ng-view=""></div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.e83e152a.js"></script> <script src="scripts/scripts.b3aacac9.js"></script> </body> </html>
+       ga('send', 'pageview');</script> <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> <script src="scripts/vendor.f406264f.js"></script> <script src="scripts/scripts.cc2ba7c4.js"></script> <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script> <script type="text/ng-template" id="example-loader.tpl.html"><div class="se-pre-con"></div></script> </body> </html>
